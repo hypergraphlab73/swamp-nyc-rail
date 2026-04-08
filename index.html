@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Interactive Folium Map Viewer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .control-box {
+      position: fixed;
+      top: 200px;
+      right: 10px;
+      z-index: 9999;
+      background: rgba(255,255,255,0.95);
+      padding: 12px 14px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .control-box label {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    #mapFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="control-box">
+    <label for="pSelect"> For r(i) = i^p Choose p:</label>
+    <select id="pSelect">
+      <option value="cta_solution_map_nyc_16_p_1e-10.html" selected >1e-10</option>
+      <option value="cta_solution_map_nyc_16_p_1e-9.html" >1e-9</option>
+      <option value="cta_solution_map_nyc_16_p_1e-8.html">1e-8</option>
+      <option value="cta_solution_map_nyc_16_p_1e-7.html">1e-7</option>
+      <option value="cta_solution_map_nyc_16_p_1e-6.html">1e-6</option>
+      <option value="cta_solution_map_nyc_16_p_1e-5.html">1e-5</option>
+      <option value="cta_solution_map_nyc_16_p_1e-4.html">1e-4</option>
+      <option value="cta_solution_map_nyc_16_p_1e-3.html">1e-3</option>
+      <option value="cta_solution_map_nyc_16_p_1e-2.html">1e-2</option>
+      <option value="cta_solution_map_nyc_16_p_1e-1.html">1e-1</option>
+      <option value="cta_solution_map_nyc_16_p_0_2.html">0.2</option>
+      <option value="cta_solution_map_nyc_16_p_0_4.html">0.4</option>
+      <option value="cta_solution_map_nyc_16_p_0_6.html">0.6</option>
+      <option value="cta_solution_map_nyc_16_p_1_0.html">1.0</option>
+    </select>
+  </div>
+
+  <iframe id="mapFrame" src="cta_solution_map_nyc_16_p_1e-10.html"></iframe>
+
+  <script>
+    const pSelect = document.getElementById("pSelect");
+    const mapFrame = document.getElementById("mapFrame");
+
+    pSelect.addEventListener("change", function () {
+      mapFrame.src = this.value;
+    });
+  </script>
+
+</body>
+</html>
